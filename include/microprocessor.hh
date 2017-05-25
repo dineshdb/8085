@@ -4,7 +4,7 @@
 #define NOF_REG 16
 
 enum REGISTER {
-	A, B, C, D, E, F, G
+	A, B, C, D, E, H, L, SP, PC
 };
 
 enum INSTRUCTION {

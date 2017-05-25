@@ -11,7 +11,7 @@ This project uses meson build system. Install meson : `sudo apt install meson`. 
 ## Authors 
 * **Dinesh Bhattarai**
 
-For contributors, see [Contributors](/contributors.md)
+For a list of contributors, see [Contributors](/contributors.md)
 
 ## License
 This project uses GNU GPLv3 license.
