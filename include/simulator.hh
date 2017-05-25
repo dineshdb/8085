@@ -11,5 +11,9 @@ class Simulator{
 public:
 	void clearMemory();
 	void clearRegisters();
+	void go();
+	void pause();
+	void resume();
+	void step();
 };
 #endif
