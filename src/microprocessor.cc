@@ -6,11 +6,32 @@ void Microprocessor::clearRegisters(){
 	}
 }
 
-int Microprocessor::step(int address){
+int Microprocessor::step(){
+	int opcode = m->getMemory(pc);
 
 	return 0;
 }
 
 char Microprocessor::getRegister(REGISTER r){
 	return registers[r];
+}
+
+bool Microprocessor::getFlag(FLAG_BITS f){
+	return registers[PSW] ^ f;
+}
+
+void Microprocessor::setFlag(FLAG_BITS f){
+	registers[PSW] |= f;
+}
+
+void Microprocessor::clearFlag(FLAG_BITS f){
+	registers[PSW] &= ~f;
+}
+
+void Microprocessor::clearFlags(){
+	registers[PSW] = 0;
+}
+
+void Microprocessor::setProgramCounter(int location){
+	pc = location;
 }
