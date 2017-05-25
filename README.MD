@@ -6,3 +6,12 @@ Development of the core simulator is in progress. GUI can be developed on par or
 
 ## Getting Started.
 This project uses meson build system. Install meson : `sudo apt install meson`. Then get into the root dir and type `meson build && cd build`. Then type `ninja` and be a ninja developer.
+
+
+## Authors 
+* **Dinesh Bhattarai**
+
+For contributors, see [Contributors](/contributors.md)
+
+## License
+This project uses GNU GPLv3 license.
