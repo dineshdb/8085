@@ -8,6 +8,7 @@ class Memory{
 public:
 	void setMemory(char data,int location);
 	void setMemory(char *data, int location, int size);
+	char getMemory(int location);
 	void clearMemory();
 };
 #endif

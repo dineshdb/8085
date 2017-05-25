@@ -3,6 +3,8 @@
 
 #define NOF_REG 16
 
+#include "memory.hh"
+
 enum REGISTER {
 	A, B, C, D, E, H, L
 };
@@ -11,12 +13,16 @@ enum INSTRUCTION {
 
 };
 class Microprocessor {
+    Memory *m;
 
     char registers[NOF_REG];
     int sp;
     int pc;
 
 public:
+	void setMemory(Memory *mem){
+		m = mem;
+	}
 	void clearRegisters();
 	void setRegister(REGISTER r, char value);
 	char getRegister(REGISTER r);

@@ -9,6 +9,9 @@ class Simulator{
     Memory m;
 
 public:
+	Simulator(){
+		p.setMemory(&m);
+	}
 	void clearMemory();
 	void clearRegisters();
 	void go();
