@@ -7,17 +7,7 @@
 #include "memory.hh"
 #include "typedef.hh"
 
-enum REGISTER {
-	A, PSW, B, C, D, E, H, L
-};
-
-enum FLAG_BITS {
-	CARRY = 	0b00000001,
-	PARITY =	0b00000100,
-	AUX_CARRY=	0b00010000,
-	ZERO =		0b01000000,
-	SIGN=		0b10000000,
-};
+enum REGISTER {};
 
 enum MNEMONIC {
 // Arithmetic
@@ -112,10 +102,40 @@ enum MNEMONIC {
 class Microprocessor {
     Memory *m;
 
-    i8 registers[NOF_REG];
-    int sp;	// Stack Pointer
-    int pc;	// Program Counter
-    int mp;	// Memory Pointer
+    i8 A;
+    union {
+	struct {
+		bool carry:1;
+		bool parity:1;
+		bool aux_carry:1;
+		bool zero:1;
+		bool sign:1;
+	};
+	i8 psw;
+    };
+    union {
+    	struct {
+    	    i8 B;
+    	    i8 C;
+    	};
+	i16 BC;
+    };
+    union {
+    	struct {
+    	    i8 D;
+    	    i8 E;
+    	};
+	i16 DE;
+    };
+    union {
+    	struct {
+    	    i8 H;
+    	    i8 L;
+    	};
+	i16 HL;
+    };
+    i16 sp;	// Stack Pointer
+    i16 pc;	// Program Counter
     int ic;	// Instruction Counter
     int cc;	// Clock Cycle Counter
 
@@ -128,9 +148,7 @@ public:
 	i8 getRegister(REGISTER r);
 	void setProgramCounter(int location);
 	int step();
-	bool getFlag(FLAG_BITS f);
-	void setFlag(FLAG_BITS f);
-	void clearFlag(FLAG_BITS f);
+
 	void clearFlags();
 
 	void add(REGISTER r);

@@ -1,7 +1,9 @@
 #ifndef TYPEDEFS_HH
 #define TYPEDEFS_HH
-typedef char i8;
-typedef unsigned short int i16;
-typedef unsigned int i32;
+
+#include <stdint.h>
+typedef int8_t i8;
+typedef int16_t i16;
+typedef int32_t i32;
 
 #endif

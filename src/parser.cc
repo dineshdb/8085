@@ -18,8 +18,7 @@ std::vector<string> split(string &s, string delim){
 Parser::Parser(string f){
 	file = f;
 	// TODO: Add all keys into the map.
-	mnemonic["add"] = ADD;
-	mnemonic["adc"] = ADC;
+	pm["add"] = parseAdd;
 }
 
 void Parser::setFile(string f){
@@ -37,11 +36,11 @@ void Parser::parse(){
 		}
 		parseLine(temp);
 	}
-
 }
 
 void Parser::parseLine(string &line){
 	string mnemonic, source, dest;
+	vector<i8> bin;
 	size_t i;
 	if((i =line.find(" ")) != string::npos){	// mnemonic found
 		mnemonic = line.substr(0, i);
@@ -60,6 +59,13 @@ void Parser::parseLine(string &line){
 		mnemonic = trim(line);
 	}
 
+	auto f = pm.find(mnemonic);
+	if( f != pm.end()){
+		f->second(bin, dest, source);
+	} else {
+		cout << "Error at line {unknown} col {unknown}. Unknown command." << endl;
+	}
+
 }
 
 string &Parser::trim(string &s){
@@ -68,7 +74,7 @@ string &Parser::trim(string &s){
 	return s;
 }
 string &Parser::ltrim(string &s){
-	if(s.length() ==0){
+	if(s.length() == 0){
 		return s;
 	}
 	int begin = 0;
@@ -79,11 +85,11 @@ string &Parser::ltrim(string &s){
 
 
 string &Parser::rtrim(string& s){
-	if(s.length()==0){
+	if(s.length() == 0){
 		return s;
 	}
-	int end=s.length()-1;
-	while(s[end--]== ' ');
-	s=  s.substr(0, end+2);
+	int end = s.length()-1;
+	while(s[end--] == ' ');
+	s = s.substr(0, end+2);
 	return s;
 }
