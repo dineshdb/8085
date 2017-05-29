@@ -1,7 +1,7 @@
 project('8085', 'cpp')
 
 my_inc = include_directories('include')
-gtkmmdep = dependency('gtkmm-3.0')
+gtkmmdep = dependency('gtkmm-3.0', required : false)
 
 parserSrc = ['src/parser.cc']
 libParser = shared_library('myparser', parserSrc, include_directories:my_inc)
