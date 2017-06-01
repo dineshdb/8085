@@ -1,4 +1,6 @@
 # 8085 Simulator [educational purpose]
+This project has pivoted to more useful and cross platform 8085-web project located [here](https://github.com/dineshdb/8085-web)
+
 This is intended to be a reimplementation of 8085 simulator, written in C++. There are already enough simulators in the market like gnusim8085. This project intends to do basic operations supported by common simulators like GUI, writing of code(mnemonics), live inspections of registers and memory, etc. 
 
 ## Development.
